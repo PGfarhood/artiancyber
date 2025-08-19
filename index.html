@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کمپین امنیت وردپرس آرتین سایبر</title>
+    
+    <!-- Google Fonts: Vazirmatn -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons (Still useful for small icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        /* --- REDESIGNED STYLES INSPIRED BY MIRKA PDF --- */
+        :root {
+            --color-primary-blue: #3A65A7;
+            --color-dark-blue: #0A192F;
+            --color-light-bg: #F0F4F8;
+            --color-white: #ffffff;
+            --color-text-dark: #2c3e50;
+            --color-text-light: #ecf0f1;
+            --color-text-muted: #5a6a7a;
+            --color-green: #27ae60;
+            --font-family: 'Vazirmatn', sans-serif;
+            --transition: all 0.3s ease;
+            --border-radius: 12px;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--color-white);
+            color: var(--color-text-dark);
+            /* UPDATED: Improved line-height */
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 100px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            overflow: hidden;
+        }
+        
+        section:nth-of-type(even) {
+             background-color: var(--color-light-bg);
+        }
+
+        section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h1, h2, h3 {
+            font-weight: 800;
+            color: var(--color-dark-blue);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+        }
+        
+        h3 {
+            font-size: 1.4rem;
+        }
+
+        p {
+            color: var(--color-text-muted);
+            margin-bottom: 15px;
+            max-width: 700px;
+            /* UPDATED: Improved font-size for readability */
+            font-size: 1.05rem;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background-color: var(--color-primary-blue);
+            color: var(--color-white);
+            border: 2px solid var(--color-primary-blue);
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 700;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(58, 101, 167, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(58, 101, 167, 0.4);
+        }
+
+        /* --- Header --- */
+        .main-header {
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            top: 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--color-dark-blue);
+        }
+
+        /* --- Page 1: Cover --- */
+        #cover {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background-color: var(--color-light-bg);
+        }
+        
+        .cover-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .cover-image {
+            width: 100%;
+            max-width: 500px;
+            justify-self: center;
+        }
+
+        #cover h1 {
+            color: var(--color-dark-blue);
+        }
+
+        #cover .subtitle {
+            font-size: 1.2rem;
+            color: var(--color-primary-blue);
+            font-weight: 500;
+            margin: 20px 0 30px 0;
+        }
+
+        /* --- Page 2: Threats --- */
+        .threats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .threat-card {
+            background-color: var(--color-white);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .threat-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .threat-card img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+
+        .threat-card h3 {
+             color: var(--color-dark-blue);
+        }
+
+        /* --- Page 3: Cost --- */
+        .cost-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 50px;
+            margin-top: 50px;
+        }
+        
+        .cost-image {
+            width: 100%;
+            max-width: 450px;
+            justify-self: center;
+        }
+        
+        .cost-formula {
+            background-color: #e3f2fd;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-top: 20px;
+            font-size: 1.1rem;
+            font-family: monospace;
+            color: var(--color-primary-blue);
+            border: 2px dashed var(--color-primary-blue);
+        }
+
+        /* --- Page 4: Solution --- */
+        #solution .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #solution .solution-image {
+            width: 300px;
+            height: 300px;
+            margin-bottom: 30px;
+        }
+        
+        /* --- Page 5 & 6: Services --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .service-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background-color: var(--color-white);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .service-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-item .icon-wrapper {
+            flex-shrink: 0;
+            border-radius: 50%;
+            padding: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-item .icon-wrapper svg {
+            height: 32px;
+            width: 32px;
+        }
+
+        .service-item h3 {
+            margin-bottom: 5px;
+        }
+
+        /* --- Page 7: Trust --- */
+        .trust-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-top: 50px;
+        }
+        
+        .trust-image {
+             width: 100%;
+             max-width: 450px;
+        }
+
+        /* --- Page 8: Pricing --- */
+        .pricing-table {
+            display: grid;
+            grid-template-columns: 1fr; /* Single column for the special offer */
+            gap: 30px;
+            margin-top: 50px;
+            justify-items: center;
+        }
+
+        .pricing-plan {
+            background-color: var(--color-white);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            border: 2px solid var(--color-primary-blue);
+            max-width: 500px; /* Wider for single plan */
+        }
+
+        .pricing-plan:hover {
+            transform: translateY(-10px);
+        }
+        
+        .pricing-plan h3 {
+            font-size: 1.5rem;
+            color: var(--color-primary-blue);
+        }
+
+        .price {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin: 15px 0;
+            color: var(--color-dark-blue);
+        }
+
+        .price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--color-text-muted);
+        }
+
+        /* --- Page 9: CTA --- */
+        #cta .container {
+            text-align: center;
+        }
+
+        #cta .offer {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary-blue);
+            margin: 30px 0;
+            line-height: 1.6;
+        }
+        
+        .btn-cta {
+            background-color: var(--color-green);
+            border-color: var(--color-green);
+            padding: 15px 40px; 
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+        }
+
+        .contact-info {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-info a {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .contact-info a:hover {
+            color: var(--color-primary-blue);
+        }
+
+        /* --- Footer --- */
+        .main-footer {
+            padding: 50px 0;
+            text-align: center;
+            background-color: var(--color-dark-blue);
+            color: var(--color-text-light);
+        }
+        
+        .main-footer .logo, .main-footer .slogan {
+            color: var(--color-white);
+        }
+
+        .main-footer .logo {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        
+        .main-footer .slogan {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: var(--color-text-muted);
+        }
+        
+        .main-footer .contact-info a {
+            color: var(--color-text-light);
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .cover-content, .cost-content, .trust-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .cover-image, .cost-image, .trust-image {
+                order: -1; /* Move image to top */
+                margin-bottom: 40px;
+                max-width: 350px;
+                margin-right: auto;
+                margin-left: auto;
+            }
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">آرتین سایبر</div>
+            <nav>
+                <a href="#cta" class="btn">دریافت آنالیز رایگان</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page 1: Cover -->
+        <section id="cover">
+            <div class="container">
+                <div class="cover-content">
+                    <div>
+                        <h1>آیا سایت شما برای هفته آینده آماده است؟</h1>
+                        <p class="subtitle">کمپین ویژه شروع به کار: امنیت کامل وردپرس، فقط در یک هفته. فرصت را از دست ندهید!</p>
+                        <a href="#pricing" class="btn">مشاهده پکیج ویژه</a>
+                    </div>
+                    <div>
+                        <img src="C:\Users\MhFarhood\OneDrive\آرتین وب\رسانه ها\OIP (5).webp" alt="سپر امنیت سایبری سه بعدی" class="cover-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page 2: Threats -->
+        <section id="threats">
+            <div class="container">
+                <h2 class="text-center">هر دقیقه تأخیر، یک ریسک جدید است!</h2>
+                <p class="text-center" style="margin: 0 auto 50px auto;">
+                    یک حفره امنیتی کوچک کافیست تا تمام زحمات شما در یک لحظه از بین برود. آیا می‌خواهید این ریسک را بپذیرید؟
+                </p>
+                <div class="threats-grid">
+                    <div class="threat-card">
+                        <img src="https://img.freepik.com/free-vector/data-theft-concept-illustration_114360-2234.jpg?w=826&t=st=1697986548~exp=1697987148~hmac=4b5220c85c07153a8080c5d31405e36502e7054f152d1141b7f035777759d587" alt="آیکون گرافیکی سرقت اطلاعات">
+                        <h3>سرقت اطلاعات مشتریان</h3>
+                        <p>از دست رفتن اعتماد مشتریان برای همیشه با دزدیده شدن اطلاعات کارت بانکی و مشخصات شخصی آنها.</p>
+                    </div>
+                    <div class="threat-card">
+                        <img src="https://img.freepik.com/free-vector/503-error-service-unavailable-concept-illustration_114360-5861.jpg?w=826&t=st=1697986591~exp=1697987191~hmac=0219c6e3b564e97669d0335035f52ce8a15629f17079f2e322b7942730248c1e" alt="آیکون گرافیکی قطعی سایت">
+                        <h3>از دسترس خارج شدن سایت</h3>
+                        <p>توقف کامل فروش در ساعات اوج بازدید و از دست دادن درآمد حیاتی کسب‌وکار شما.</p>
+                    </div>
+                    <div class="threat-card">
+                        <img src="https://img.freepik.com/free-vector/hacker-concept-illustration_114360-2226.jpg?w=826&t=st=1697986622~exp=1697987222~hmac=50e0468087a1519d083b4823292418e2175a004b50c95863583526274488b139" alt="آیکون گرافیکی باج گیری">
+                        <h3>باج‌گیری هکرها</h3>
+                        <p>تهدید به پاک کردن تمام اطلاعات شما در ازای دریافت پول، یک کابوس واقعی برای هر کسب‌وکار.</p>
+                    </div>
+                    <div class="threat-card">
+                        <img src="https://img.freepik.com/free-vector/business-mission-concept-illustration_114360-7212.jpg?w=826&t=st=1697986657~exp=1697987257~hmac=7e12733979604323675037a505f03930b8e62215c826b5a32997184285496417" alt="آیکون گرافیکی تخریب برند">
+                        <h3>تخریب برند و اعتبار</h3>
+                        <p>از بین رفتن سال‌ها تلاش و زحمت شما برای ساختن یک نام و اعتبار معتبر در بازار.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page 3: Cost -->
+        <section id="cost">
+            <div class="container">
+                <h2 class="text-center">هک شدن سایت شما چقدر هزینه دارد؟</h2>
+                <div class="cost-content">
+                    <div>
+                        <p>خیلی بیشتر از آنچه فکر می‌کنید! خسارت فقط مالی نیست، بلکه اعتبار شما را نابود می‌کند و بازگرداندن اعتماد مشتریان تقریباً غیرممکن است.</p>
+                        <div class="cost-formula">
+                            (درآمد روزانه شما ÷ ۲۴) × (ساعات قطعی سایت) = ضرر مستقیم شما
+                        </div>
+                    </div>
+                    <div>
+                        <img src="C:\Users\MhFarhood\OneDrive\آرتین وب\رسانه ها\OIP (6).webp" alt="تصویر سه بعدی نمودار سقوط فروش" class="cost-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page 4: Solution -->
+        <section id="solution">
+            <div class="container">
+                 <img src="https://img.freepik.com/free-vector/cyber-security-concept_114360-293.jpg?w=996&t=st=1697985273~exp=1697985873~hmac=388c39e8020584b8d7831d102e35905587f8717904e9c70034a17951a8963558" alt="تصویر مفهومی راه حل امنیت" class="solution-image">
+                <h2>آرتین سایبر: نگهبان ۲۴ ساعته کسب‌وکار شما</h2>
+                <p class="text-center" style="max-width: 800px; margin: 0 auto;">ما در آرتین سایبر، یک هدف داریم: حفاظت از رویای شما. ما نمی‌گذاریم تلاش‌های شبانه‌روزی شما توسط مجرمان سایبری به خطر بیفتد. تخصص ما، آرامش خیال شماست.</p>
+            </div>
+        </section>
+
+        <!-- Page 5 & 6: Services -->
+        <section id="services">
+            <div class="container">
+                <h2 class="text-center">سپر امنیتی ما در ۷ روز چه می‌کند؟</h2>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <div class="icon-wrapper" style="background-color: #e3f2fd; color: #3a65a7;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>فایروال پیشرفته (WAF)</h3>
+                            <p>دیواری هوشمند که حملات را قبل از رسیدن به سایت شما شناسایی و متوقف می‌کند.</p>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="icon-wrapper" style="background-color: #e0f2f1; color: #00796b;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                               <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 10.5a.5.5 0 01.5-.5h3a.5.5 0 010 1h-3a.5.5 0 01-.5-.5zm-1-4a.5.5 0 01.5-.5h5a.5.5 0 010 1h-5a.5.5 0 01-.5-.5z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>اسکنر هوشمند بدافزار</h3>
+                            <p>جستجوی ۲۴ ساعته برای یافتن و نابودی کدهای مخرب، ویروس‌ها و جاسوس‌های پنهان.</p>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="icon-wrapper" style="background-color: #fff8e1; color: #f9a825;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>محافظت از صفحه ورود</h3>
+                            <p>دیگر نگران حملات Brute Force و تلاش هکرها برای حدس زدن رمز عبور خود نباشید.</p>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="icon-wrapper" style="background-color: #f3e5f5; color: #8e24aa;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 11v4m0 4h.01" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>پشتیبان‌گیری خودکار و امن</h3>
+                            <p>حتی در بدترین شرایط، سایت شما با یک کلیک در چند دقیقه به حالت اول بازمی‌گردد.</p>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="icon-wrapper" style="background-color: #ffebee; color: #c62828;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h5M20 20v-5h-5M4 4l16 16" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>به‌روزرسانی امن و مدیریت شده</h3>
+                            <p>ما هسته وردپرس، پلاگین‌ها و قالب شما را به شکلی امن و کنترل‌شده آپدیت می‌کنیم.</p>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="icon-wrapper" style="background-color: #e8eaf6; color: #3949ab;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>مانیتورینگ ۲۴/۷ و گزارش‌ها</h3>
+                            <p>همیشه از وضعیت امنیتی سایت خود با گزارش‌های شفاف و قابل فهم ما باخبر باشید.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page 7: Trust -->
+        <section id="trust">
+            <div class="container">
+                <h2 class="text-center">چرا باید به آرتین سایبر اعتماد کنید؟</h2>
+                <div class="trust-content">
+                    <div>
+                        <h3>تخصص، نه فقط تجربه</h3>
+                        <p>سابقه ما در تعداد مشتریان نیست، بلکه در عمق دانش فنی ماست. تیم ما متخصصان امنیت سایبری هستند که با جدیدترین تهدیدها زندگی می‌کنند و همیشه یک قدم از هکرها جلوتر هستند.</p>
+                        <h3>روند کاری شفاف</h3>
+                        <p>ما شما را در جریان تمام مراحل قرار می‌دهیم: ۱. ارزیابی کامل > ۲. پیاده‌سازی سپر امنیتی > ۳. مانیتورینگ و پشتیبانی دائمی.</p>
+                         <h3>تضمین رضایت ۱۰۰٪</h3>
+                        <p>ما به کار خود اطمینان کامل داریم و آرامش خیال شما اولویت اصلی ماست. به همین دلیل خدمات خود را با ضمانت کامل ارائه می‌دهیم.</p>
+                    </div>
+                    <div>
+                        <img src="C:\Users\MhFarhood\OneDrive\آرتین وب\رسانه ها\14488533.png" alt="تصویر مفهومی اعتماد و همکاری" class="trust-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page 8: Pricing -->
+        <section id="pricing">
+            <div class="container">
+                <h2 class="text-center">یک پکیج، امنیت کامل، فرصت محدود</h2>
+                <p class="text-center" style="margin: 0 auto 50px auto;">ما همه چیز را ساده کرده‌ایم. یک پکیج جامع که تمام نیازهای امنیتی شما را پوشش می‌دهد، با قیمت ویژه برای شروع همکاری.</p>
+                <div class="pricing-table">
+                    <div class="pricing-plan">
+                        <h3>پکیج امنیت کامل (ویژه شروع به کار)</h3>
+                        <div class="price">۵,۷۵۰,۰۰۰۰<span>/ سالانه</span></div>
+                        <p style="text-align: center; margin: 0 auto;">شامل تمام خدمات امنیتی از فایروال تا مانیتورینگ  ساعته.</p>
+                        <br>
+                        <a href="#cta" class="btn">همین حالا اقدام کنید</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page 9: Final CTA -->
+        <section id="cta">
+            <div class="container">
+                <h2>فرصت را از دست ندهید!</h2>
+                <p class="offer">به ۱۰۰ نفر اولی که اقدام کنند،<br>آنالیز کامل و رایگان امنیتی به ارزش ۵۰۰,۰۰۰ تومان هدیه داده می‌شود!</p>
+                <a href="#" class="btn btn-cta">دریافت آنالیز رایگان و فوری</a>
+                <div class="contact-info">
+                    <a href="tel:+989123456789"><i class="fas fa-phone"></i> ۰۹۱۲۳۴۵۶۷۸۹</a>
+                    <a href="mailto:info@artincyber.com"><i class="fas fa-envelope"></i> info@artincyber.com</a>
+                    <a href="#"><i class="fas fa-globe"></i> www.artincyber.com</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Page 10: Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="logo">آرتین سایبر</div>
+            <p class="slogan">امنیت در دستان متخصصان</p>
+            <div class="contact-info">
+                <a href="tel:+989123456789">تلفن</a>
+                <a href="mailto:info@artincyber.com">ایمیل</a>
+                <a href="#">وب‌سایت</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Intersection Observer for fade-in animation on scroll
+        const sections = document.querySelectorAll('section');
+
+        const options = {
+            root: null, // it is the viewport
+            threshold: 0.1,
+            rootMargin: "0px"
+        };
+
+        const observer = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                }
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            });
+        }, options);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+</body>
+</html>
